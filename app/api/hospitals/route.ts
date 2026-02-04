@@ -18,22 +18,28 @@ export async function GET(req: NextRequest) {
         if (emergencyOnly) query.emergencyServices = true;
         if (district) query.district = new RegExp(district, 'i');
 
-        let hospitals = await Hospital.find(query);
+        const hospitalDocs = await Hospital.find(query);
+
+        // Work with plain objects to avoid Mongoose Document type issues
+        let hospitals = hospitalDocs.map((h) => h.toObject());
 
         if (lat && lng) {
             hospitals = hospitals
                 .map((h) => ({
-                    ...h.toObject(),
+                    ...h,
                     distance: calculateDistance(lat, lng, h.location.lat, h.location.lng),
                 }))
                 .filter((h) => (h as { distance: number }).distance <= radius)
                 .sort((a, b) => (a as { distance: number }).distance - (b as { distance: number }).distance);
         }
 
-        return NextResponse.json({
-            hospitals,
-            count: hospitals.length,
-        }, { status: 200 });
+        return NextResponse.json(
+            {
+                hospitals,
+                count: hospitals.length,
+            },
+            { status: 200 }
+        );
     } catch (error: unknown) {
         const err = error as Error;
         console.error('Get hospitals error:', err);
