@@ -296,7 +296,7 @@ export default function AdminDashboard() {
                     <h2 className="text-xl font-bold mb-4">📊 Analytics</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
-                            <p className="text-neutral-600">Today's Requests</p>
+                            <p className="text-neutral-600">Today&apos;s Requests</p>
                             <p className="text-3xl font-bold text-primary-blue">
                                 {requests.filter(r => {
                                     const today = new Date().setHours(0, 0, 0, 0);
