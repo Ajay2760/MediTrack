@@ -60,29 +60,38 @@ export default function HomePage() {
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-20">
         <div className="text-center max-w-4xl mx-auto fade-in">
-          <div className="inline-block mb-6">
-            <div className="text-6xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-              🚑 {t('appName')}
+          {/* App Name with Ambulance Emoji */}
+          <div className="mb-8">
+            <div className="text-7xl md:text-8xl font-bold mb-4">
+              <span className="inline-block animate-pulse">🚑</span>
             </div>
+            <h1 className="text-6xl md:text-7xl font-extrabold bg-gradient-to-r from-blue-600 via-teal-500 to-blue-800 bg-clip-text text-transparent mb-4">
+              {t('common.appName')}
+            </h1>
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-bold text-neutral-900 mb-6 leading-tight">
-            {t('tagline')}
-            <br />
-            <span className="text-primary-blue">{t('tamilNadu')}</span>
-          </h1>
-
-          <p className="text-xl text-neutral-600 mb-12 max-w-2xl mx-auto">
-            Emergency response across Tamil Nadu. Track ambulances in real-time,
-            request immediate help with one tap, and save lives with GPS-powered precision.
+          {/* Tagline */}
+          <h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-4 leading-tight">
+            {t('home.tagline')}
+          </h2>
+          <p className="text-2xl md:text-3xl font-semibold text-primary-teal mb-8">
+            {t('home.tamilNadu')}
           </p>
 
+          <p className="text-xl text-neutral-600 mb-12 max-w-2xl mx-auto">
+            {t('home.description')}
+          </p>
+
+          {/* Main CTA Buttons - Direct Access */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Link href="/sos" className="btn btn-emergency">
-              🚨 {t('sosButton')}
+            <Link href="/sos" className="btn btn-emergency text-lg px-8 py-4">
+              🚨 {t('home.emergencyButton')}
             </Link>
-            <Link href="/auth/login" className="btn btn-primary">
-              {t('login')} / {t('signUp')}
+            <Link href="/alerts" className="btn btn-primary text-lg px-8 py-4">
+              🌊 {t('home.alertsButton')}
+            </Link>
+            <Link href="/resources/first-aid" className="btn btn-outline text-lg px-8 py-4">
+              📚 {t('home.resourcesButton')}
             </Link>
           </div>
 

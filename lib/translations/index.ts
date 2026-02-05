@@ -1,11 +1,13 @@
 // Central translations for MediTrack
 // Supports English (en) and Tamil (ta)
 
+export interface Translation {
+    en: string;
+    ta: string;
+}
+
 export interface Translations {
-    [key: string]: {
-        en: string;
-        ta: string;
-    };
+    [key: string]: Translation;
 }
 
 export const translations: Translations = {
@@ -15,8 +17,18 @@ export const translations: Translations = {
     'common.error': { en: 'Error', ta: 'பிழை' },
     'common.success': { en: 'Success', ta: 'வெற்றி' },
     'common.cancel': { en: 'Cancel', ta: 'ரத்து செய்' },
+    'common.confirm': { en: 'Confirm', ta: 'உறுதிப்படுத்து' },
+    'common.close': { en: 'Close', ta: 'மூடு' },
     'common.save': { en: 'Save', ta: 'சேமி' },
     'common.back': { en: 'Back', ta: 'திரும்பு' },
+
+    // Home Page
+    'home.tagline': { en: 'Emergency Medical Response', ta: 'அவசர மருத்துவ பதில்' },
+    'home.tamilNadu': { en: 'Tamil Nadu', ta: 'தமிழ்நாடு' },
+    'home.description': { en: 'Real-time ambulance tracking, disaster alerts, and emergency resources across Tamil Nadu. Get help instantly with one tap.', ta: 'தமிழ்நாடு முழுவதும் நிகழ்நேர ஆம்புலன்ஸ் கண்காணிப்பு, பேரிடர் எச்சரிக்கைகள் மற்றும் அவசர வளங்கள். ஒரு தட்டலில் உடனடியாக உதவி பெறுங்கள்.' },
+    'home.emergencyButton': { en: 'Emergency SOS', ta: 'அவசர SOS' },
+    'home.alertsButton': { en: 'Disaster Alerts', ta: 'பேரிடர் எச்சரிக்கைகள்' },
+    'home.resourcesButton': { en: 'First Aid Guide', ta: 'முதலுதவி வழிகாட்டி' },
 
     // Emergency / SOS
     'sos.title': { en: 'Emergency SOS', ta: 'அவசர SOS' },
