@@ -12,10 +12,15 @@ export interface IHospital extends Document {
     phone: string;
     emergencyPhone?: string;
     email?: string;
+    whatsappContact?: string;
     emergencyServices: boolean;
     bedAvailability: number;
     totalBeds?: number;
     specialties: string[];
+    conditions: string[]; // Cardiac, Orthopedic, Pediatric, Neurology, etc.
+    facilities: string[]; // ICU, NICU, Dialysis, CT Scan, MRI, etc.
+    traumaCenter: boolean;
+    operatingHours?: string;
     isGovernment: boolean;
     createdAt: Date;
     updatedAt: Date;
@@ -50,6 +55,7 @@ const HospitalSchema: Schema = new Schema(
         },
         emergencyPhone: { type: String, trim: true },
         email: { type: String, trim: true, lowercase: true },
+        whatsappContact: { type: String, trim: true },
         emergencyServices: {
             type: Boolean,
             default: true,
@@ -64,6 +70,19 @@ const HospitalSchema: Schema = new Schema(
             type: [String],
             default: ['Emergency'],
         },
+        conditions: {
+            type: [String],
+            default: [],
+        },
+        facilities: {
+            type: [String],
+            default: [],
+        },
+        traumaCenter: {
+            type: Boolean,
+            default: false,
+        },
+        operatingHours: { type: String, default: '24/7' },
         isGovernment: {
             type: Boolean,
             default: false,

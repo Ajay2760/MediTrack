@@ -241,8 +241,8 @@ export default function AdminDashboard() {
                                             <p className="text-sm text-neutral-600">{request.patient?.phone || request.guestPhone || '—'}</p>
                                         </div>
                                         <span className={`badge badge-${request.status === 'completed' ? 'success' :
-                                                request.status === 'cancelled' ? 'danger' :
-                                                    'warning'
+                                            request.status === 'cancelled' ? 'danger' :
+                                                'warning'
                                             }`}>
                                             {request.status}
                                         </span>

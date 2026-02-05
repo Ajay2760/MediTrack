@@ -14,10 +14,15 @@ type PlainHospital = {
     phone: string;
     emergencyPhone?: string;
     email?: string;
+    whatsappContact?: string;
     emergencyServices: boolean;
     bedAvailability: number;
     totalBeds?: number;
     specialties: string[];
+    conditions: string[];
+    facilities: string[];
+    traumaCenter: boolean;
+    operatingHours?: string;
     isGovernment: boolean;
     createdAt: Date;
     updatedAt: Date;
@@ -36,10 +41,16 @@ export async function GET(req: NextRequest) {
         const radius = parseFloat(searchParams.get('radius') || '50'); // km
         const district = searchParams.get('district');
         const emergencyOnly = searchParams.get('emergencyOnly') === 'true';
+        const condition = searchParams.get('condition');
+        const facility = searchParams.get('facility');
+        const traumaCenter = searchParams.get('traumaCenter');
 
         const query: Record<string, unknown> = {};
         if (emergencyOnly) query.emergencyServices = true;
         if (district) query.district = new RegExp(district, 'i');
+        if (condition) query.conditions = new RegExp(condition, 'i');
+        if (facility) query.facilities = new RegExp(facility, 'i');
+        if (traumaCenter === 'true') query.traumaCenter = true;
 
         const hospitalDocs = await Hospital.find(query);
 
@@ -53,7 +64,13 @@ export async function GET(req: NextRequest) {
                     distance: calculateDistance(lat, lng, h.location.lat, h.location.lng),
                 }))
                 .filter((h) => h.distance <= radius)
-                .sort((a, b) => a.distance - b.distance);
+                .sort((a, b) => {
+                    // Prioritize trauma centers
+                    if (a.traumaCenter && !b.traumaCenter) return -1;
+                    if (!a.traumaCenter && b.traumaCenter) return 1;
+                    // Then sort by distance
+                    return a.distance - b.distance;
+                });
         }
 
         return NextResponse.json(

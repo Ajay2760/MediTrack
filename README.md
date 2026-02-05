@@ -6,10 +6,15 @@ This is a comprehensive emergency ambulance tracking system built with Next.js, 
 - 📍 Live location updates for users and drivers
 - 🚨 Emergency request system with automatic ambulance matching
 - 👨‍⚕️ Multi-role authentication (Patient, Driver, Admin)
-- 🏥 Hospital integration
+- 🏥 Hospital integration with condition-based search
 - 📊 Admin analytics dashboard
 - 🗺️ Interactive maps with Leaflet
 - ⚡ WebSocket real-time communication
+- 🌊 **NEW**: Disaster alert subscription system
+- 🩸 **NEW**: Blood donor search and registration
+- 📚 **NEW**: Emergency resources (First Aid, CPR, Helplines)
+- ♿ **NEW**: Accessibility features (Text-to-Speech, Offline SMS)
+- 🌐 **NEW**: Full Tamil/English bilingual support
 
 ## Tech Stack
 
@@ -101,11 +106,24 @@ meditrack/
 
 ## Environment Variables
 
+Required:
 ```
 MONGODB_URI=mongodb://localhost:27017/meditrack
 JWT_SECRET=your-super-secret-jwt-key
 NEXT_PUBLIC_API_URL=http://localhost:3000
 NEXT_PUBLIC_SOCKET_URL=http://localhost:3001
+```
+
+Optional (for SMS fallback feature):
+```
+# Twilio
+TWILIO_ACCOUNT_SID=your_account_sid
+TWILIO_AUTH_TOKEN=your_auth_token
+TWILIO_PHONE_NUMBER=+1234567890
+
+# OR MSG91 (Indian SMS gateway)
+MSG91_AUTH_KEY=your_auth_key
+MSG91_SENDER_ID=your_sender_id
 ```
 
 ## API Endpoints
@@ -161,15 +179,22 @@ For testing, you can create accounts with different roles:
 - MongoDB must be running before starting the application
 - WebSocket server runs on port 3001, Next.js on port 3000
 
+## Features Documentation
+
+See [FEATURES.md](./FEATURES.md) for detailed user guide on new features.
+
 ## Future Enhancements
 
 - [ ] AI-based ambulance matching
 - [ ] Traffic-aware routing with Google Maps
 - [ ] Push notifications via FCM
-- [ ] Voice emergency commands
-- [ ] Multi-language support
+- [x] ~~Voice emergency commands~~ ✅ Completed
+- [x] ~~Multi-language support~~ ✅ Completed (English/Tamil)
 - [ ] Payment integration
 - [ ] Trip history and invoicing
+- [x] ~~Disaster alerts~~ ✅ Completed
+- [x] ~~Blood donor system~~ ✅ Completed
+- [x] ~~First aid resources~~ ✅ Completed
 
 ## License
 

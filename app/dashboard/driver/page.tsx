@@ -44,9 +44,9 @@ export default function DriverDashboard() {
 
         const parsedUser = JSON.parse(userData);
         setUser(parsedUser);
-
         // Fetch ambulance data
         fetchAmbulanceData(parsedUser.id);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
