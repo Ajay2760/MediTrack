@@ -6,7 +6,7 @@ import { useLanguage } from '@/components/LanguageProvider';
 import { useTheme } from '@/components/ThemeProvider';
 
 export default function HomePage() {
-  const { locale, setLocale, t } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
   const { theme, toggleTheme } = useTheme();
 
   return (
@@ -36,8 +36,8 @@ export default function HomePage() {
         <div className="inline-flex rounded-full p-1 bg-neutral-200 dark:bg-neutral-700 shadow-md">
           <button
             type="button"
-            onClick={() => setLocale('en')}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${locale === 'en'
+            onClick={() => setLanguage('en')}
+            className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${language === 'en'
               ? 'bg-primary-blue text-white shadow-md'
               : 'text-neutral-700 dark:text-neutral-300 hover:text-primary-blue dark:hover:text-primary-light'
               }`}
@@ -46,8 +46,8 @@ export default function HomePage() {
           </button>
           <button
             type="button"
-            onClick={() => setLocale('ta')}
-            className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${locale === 'ta'
+            onClick={() => setLanguage('ta')}
+            className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${language === 'ta'
               ? 'bg-primary-blue text-white shadow-md'
               : 'text-neutral-700 dark:text-neutral-300 hover:text-primary-blue dark:hover:text-primary-light'
               }`}
