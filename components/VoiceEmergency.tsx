@@ -67,15 +67,15 @@ export default function VoiceEmergency({ onEmergencyTriggered }: VoiceEmergencyP
                 🎤 Voice Emergency
             </h3>
             <p className="text-text-secondary mb-4 text-sm">
-                Speak "Emergency", "Help", or "SOS" to send an alert
+                Speak &quot;Emergency&quot;, &quot;Help&quot;, or &quot;SOS&quot; to send an alert
             </p>
 
             <button
                 onClick={startListening}
                 disabled={!supported || listening}
                 className={`w-20 h-20 rounded-full mx-auto mb-4 transition ${listening
-                        ? 'bg-emergency-red animate-pulse'
-                        : 'bg-primary-teal hover:bg-primary-teal-dark'
+                    ? 'bg-emergency-red animate-pulse'
+                    : 'bg-primary-teal hover:bg-primary-teal-dark'
                     } text-white flex items-center justify-center text-3xl`}
             >
                 🎤
@@ -83,7 +83,7 @@ export default function VoiceEmergency({ onEmergencyTriggered }: VoiceEmergencyP
 
             {transcript && (
                 <p className="text-sm text-text-secondary italic">
-                    "{transcript}"
+                    &quot;{transcript}&quot;
                 </p>
             )}
 

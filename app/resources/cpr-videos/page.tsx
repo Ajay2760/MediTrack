@@ -140,10 +140,10 @@ export default function CPRVideosPage() {
                         <div className="bg-bg-accent p-4 rounded-lg">
                             <h3 className="font-bold text-primary-teal-dark mb-2">🎯 Key Points to Remember:</h3>
                             <ul className="space-y-2 text-sm">
-                                <li>✓ <strong>Compressions:</strong> 100-120 per minute (rhythm of "Stayin' Alive")</li>
+                                <li>✓ <strong>Compressions:</strong> 100-120 per minute (rhythm of &quot;Stayin&apos; Alive&quot;)</li>
                                 <li>✓ <strong>Depth:</strong> 2 inches (5cm) for adults, 1.5 inches for children</li>
                                 <li>✓ <strong>Ratio:</strong> 30 compressions : 2 rescue breaths</li>
-                                <li>✓ <strong>Don't stop</strong> until help arrives or person breathes</li>
+                                <li>✓ <strong>Don&apos;t stop</strong> until help arrives or person breathes</li>
                             </ul>
                         </div>
 
