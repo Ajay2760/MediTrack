@@ -1,7 +1,6 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
 
-export interface IAmbulance extends Document {
-    _id: string;
+export interface Ambulance extends Document {
     registrationNumber: string;
     driver: mongoose.Types.ObjectId;
     location: {
@@ -62,7 +61,7 @@ const AmbulanceSchema: Schema = new Schema(
 AmbulanceSchema.index({ status: 1 });
 AmbulanceSchema.index({ registrationNumber: 1 });
 
-const Ambulance: Model<IAmbulance> =
-    mongoose.models.Ambulance || mongoose.model<IAmbulance>('Ambulance', AmbulanceSchema);
+const AmbulanceModel: Model<Ambulance> =
+    mongoose.models.Ambulance || mongoose.model<Ambulance>('Ambulance', AmbulanceSchema);
 
-export default Ambulance;
+export default AmbulanceModel;

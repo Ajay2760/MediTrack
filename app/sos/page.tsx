@@ -188,7 +188,7 @@ export default function SOSPage() {
                                 <LiveMap
                                     center={[latitude, longitude]}
                                     userLocation={{ lat: latitude, lng: longitude }}
-                                    ambulances={ambulance ? [{
+                                    ambulances={ambulance && request ? [{
                                         _id: (ambulance as { _id?: string })._id || '',
                                         registrationNumber: ambulance.registrationNumber || '',
                                         location: (request.pickupLocation as { lat: number; lng: number }) || { lat: latitude, lng: longitude },

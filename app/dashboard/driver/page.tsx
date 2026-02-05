@@ -129,7 +129,7 @@ export default function DriverDashboard() {
 
             const data = await response.json();
             setActiveRequest(data.request);
-            setIncomingRequests(prev => prev.filter(req => (req._id || req.requestId) !== requestId));
+            setIncomingRequests(prev => prev.filter(req => req._id !== requestId));
             setCurrentStatus('on_route');
 
             // Notify via socket
@@ -151,7 +151,7 @@ export default function DriverDashboard() {
     };
 
     const handleDeclineRequest = (requestId: string) => {
-        setIncomingRequests(prev => prev.filter(req => (req._id || req.requestId) !== requestId));
+        setIncomingRequests(prev => prev.filter(req => req._id !== requestId));
         emit('emergency:decline', { requestId, ambulanceId: ambulance._id });
     };
 
@@ -345,7 +345,7 @@ export default function DriverDashboard() {
                                         method: 'PATCH',
                                         headers: { 'Content-Type': 'application/json' },
                                         body: JSON.stringify({ handoverNotes: notes }),
-                                    }).catch(() => {});
+                                    }).catch(() => { });
                                 }}
                             />
                         </div>

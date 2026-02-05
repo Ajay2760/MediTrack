@@ -3,6 +3,29 @@ import connectDB from '@/lib/db';
 import Hospital from '@/models/Hospital';
 import { calculateDistance } from '@/lib/geolocation';
 
+// Type for plain hospital object (without Mongoose Document methods)
+type PlainHospital = {
+    _id: any;
+    name: string;
+    nameTamil?: string;
+    location: { lat: number; lng: number };
+    address: string;
+    district: string;
+    phone: string;
+    emergencyPhone?: string;
+    email?: string;
+    emergencyServices: boolean;
+    bedAvailability: number;
+    totalBeds?: number;
+    specialties: string[];
+    isGovernment: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+    __v: number;
+};
+
+type HospitalWithDistance = PlainHospital & { distance: number };
+
 export async function GET(req: NextRequest) {
     try {
         await connectDB();
@@ -21,7 +44,7 @@ export async function GET(req: NextRequest) {
         const hospitalDocs = await Hospital.find(query);
 
         // Work with plain objects to avoid Mongoose Document type issues
-        let hospitals = hospitalDocs.map((h) => h.toObject());
+        let hospitals: PlainHospital[] | HospitalWithDistance[] = hospitalDocs.map((h) => h.toObject() as PlainHospital);
 
         if (lat && lng) {
             hospitals = hospitals
@@ -29,8 +52,8 @@ export async function GET(req: NextRequest) {
                     ...h,
                     distance: calculateDistance(lat, lng, h.location.lat, h.location.lng),
                 }))
-                .filter((h) => (h as { distance: number }).distance <= radius)
-                .sort((a, b) => (a as { distance: number }).distance - (b as { distance: number }).distance);
+                .filter((h) => h.distance <= radius)
+                .sort((a, b) => a.distance - b.distance);
         }
 
         return NextResponse.json(

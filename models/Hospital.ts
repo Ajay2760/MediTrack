@@ -1,7 +1,6 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
 
 export interface IHospital extends Document {
-    _id: string;
     name: string;
     nameTamil?: string;
     location: {

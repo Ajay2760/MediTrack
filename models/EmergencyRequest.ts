@@ -1,7 +1,6 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
 
-export interface IEmergencyRequest extends Document {
-    _id: string;
+export interface EmergencyRequest extends Document {
     patient?: mongoose.Types.ObjectId;
     guestName?: string;
     guestPhone?: string;
@@ -89,8 +88,8 @@ EmergencyRequestSchema.index({ patient: 1, createdAt: -1 });
 EmergencyRequestSchema.index({ ambulance: 1, createdAt: -1 });
 EmergencyRequestSchema.index({ status: 1 });
 
-const EmergencyRequest: Model<IEmergencyRequest> =
+const EmergencyRequestModel: Model<EmergencyRequest> =
     mongoose.models.EmergencyRequest ||
-    mongoose.model<IEmergencyRequest>('EmergencyRequest', EmergencyRequestSchema);
+    mongoose.model<EmergencyRequest>('EmergencyRequest', EmergencyRequestSchema);
 
-export default EmergencyRequest;
+export default EmergencyRequestModel;

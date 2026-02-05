@@ -1,7 +1,6 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
 
-export interface IUser extends Document {
-    _id: string;
+export interface User extends Document {
     name: string;
     email?: string;
     phone?: string;
@@ -68,6 +67,6 @@ UserSchema.index({ email: 1 });
 UserSchema.index({ phone: 1 });
 UserSchema.index({ role: 1 });
 
-const User: Model<IUser> = mongoose.models.User || mongoose.model<IUser>('User', UserSchema);
+const UserModel: Model<User> = mongoose.models.User || mongoose.model<User>('User', UserSchema);
 
-export default User;
+export default UserModel;
