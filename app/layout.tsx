@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { LanguageProvider } from '@/components/LanguageProvider';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 export const metadata: Metadata = {
     title: 'MediTrack - Real-Time Ambulance Tracking | Tamil Nadu',
@@ -29,7 +30,9 @@ export default function RootLayout({
                 />
             </head>
             <body>
-                <LanguageProvider>{children}</LanguageProvider>
+                <ThemeProvider>
+                    <LanguageProvider>{children}</LanguageProvider>
+                </ThemeProvider>
             </body>
         </html>
     );
